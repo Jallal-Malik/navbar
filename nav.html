@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Website</title>
+    <style>
+        /* General Reset */
+body, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Header Styling */
+header {
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+}
+
+/* Navigation Menu */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+/* Logo */
+.logo img {
+    height: 50px; /* Adjust the height as needed */
+}
+
+/* Menu Items */
+.nav-menu {
+    display: flex;
+}
+
+.nav-menu li {
+    margin: 0 10px;
+}
+
+.nav-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #ff6347; /* Change to your preferred hover color */
+}
+
+/* Auth Buttons */
+.auth-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.auth-buttons .login-btn,
+.auth-buttons .signup-btn {
+    background-color: #ff6347;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.auth-buttons .login-btn:hover,
+.auth-buttons .signup-btn:hover {
+    background-color: #ff4500; /* Darker shade for hover */
+}
+
+/* Dropdown Forms */
+.dropdown-form {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 60px;
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.dropdown-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-form h2 {
+    margin-bottom: 20px;
+}
+
+.dropdown-form label {
+    margin-bottom: 5px;
+}
+
+.dropdown-form input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.dropdown-form button {
+    padding: 10px;
+    background-color: #ff6347;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dropdown-form button:hover {
+    background-color: #ff4500; /* Darker shade for hover */
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/logo.png" alt="Company Logo">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="login-btn">Login</button>
+                <button class="signup-btn">Sign Up</button>
+            </div>
+            <div class="dropdown-form" id="login-form">
+                <form>
+                    <h2>Login</h2>
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" required>
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+            <div class="dropdown-form" id="signup-form">
+                <form>
+                    <h2>Sign Up</h2>
+                    <label for="signup-email">Email:</label>
+                    <input type="email" id="signup-email" required>
+                    <label for="signup-password">Password:</label>
+                    <input type="password" id="signup-password" required>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <!-- The rest of your website content goes here -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const loginBtn = document.querySelector('.login-btn');
+    const signupBtn = document.querySelector('.signup-btn');
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+
+    loginBtn.addEventListener('click', function () {
+        loginForm.style.display = loginForm.style.display === 'block' ? 'none' : 'block';
+        signupForm.style.display = 'none'; // Hide signup form if it's open
+    });
+
+    signupBtn.addEventListener('click', function () {
+        signupForm.style.display = signupForm.style.display === 'block' ? 'none' : 'block';
+        loginForm.style.display = 'none'; // Hide login form if it's open
+    });
+
+    // Close the forms when clicking outside
+    document.addEventListener('click', function (event) {
+        if (!event.target.closest('.login-btn') && !event.target.closest('.signup-btn') && !event.target.closest('.dropdown-form')) {
+            loginForm.style.display = 'none';
+            signupForm.style.display = 'none';
+        }
+    });
+});
+    </script>
+</body>
+</html>
